@@ -45,3 +45,8 @@ body {
 ::-webkit-resizer {
 	background-color: #666;
 }
+
+.app-container {
+	max-width: 1600px;
+	margin: 30px auto;
+}
