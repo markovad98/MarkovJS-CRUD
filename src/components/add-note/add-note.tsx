@@ -38,9 +38,9 @@ export const AddNote = () => {
 				<label>Status</label>
 				<select value={status} onChange={(e) => setStatus(e.target.value)}>
 					<option style={{ display: 'none' }} value="" />
-					<option value="grapefruit">Срочно</option>
-					<option value="lime">Нужно</option>
-					<option value="coconut">Необязательно</option>
+					<option value="High priority">High priority</option>
+					<option value="Medium priority">Medium priority</option>
+					<option value="Low priority">Low priority</option>
 				</select>
 			</div>
 

@@ -1,0 +1,10 @@
+.notes-list {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+
+	.notes-list__item {
+		width: 48%;
+		margin-bottom: 4%;
+	}
+}
