@@ -11,9 +11,12 @@ export const AddNote = () => {
 
 	const onSubmit = (e: any) => {
 		e.preventDefault();
-		addNote(title, body, status);
+		if (title && body && status) {
+			addNote(title, body, status);
+		} else {
+			alert('Fields are required');
+		}
 
-		console.log(title + ' ' + status + ' ' + body);
 		setTitle('');
 		setBody('');
 		setStatus('');
@@ -34,13 +37,10 @@ export const AddNote = () => {
 			<div className="form-group">
 				<label>Status</label>
 				<select value={status} onChange={(e) => setStatus(e.target.value)}>
-					<option style={{ display: 'none' }} value="">
-						Hello
-					</option>
-					<option value="grapefruit">Грейпфрут</option>
-					<option value="lime">Лайм</option>
-					<option value="coconut">Кокос</option>
-					<option value="mango">Манго</option>
+					<option style={{ display: 'none' }} value="" />
+					<option value="grapefruit">Срочно</option>
+					<option value="lime">Нужно</option>
+					<option value="coconut">Необязательно</option>
 				</select>
 			</div>
 
