@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import { NotesList } from '../components/notes-list/notes-list';
 import { INote } from '../interfaces/note'
 import { NotesFilter } from '../components/notes-filter/notes-filter';
 import { connect } from 'react-redux';
 
 const NotesPage = ({ notes }: any) => {
+
 
 	const [filteredNotes, setFilteredNotes] = useState(notes)
 

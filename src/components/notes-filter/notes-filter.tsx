@@ -1,13 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from 'reactstrap';
 import './notes-filter.scss';
 
 export const NotesFilter = ({ filterByTextFunc, filterByStatusFunc, unsetFilters }: any) => {
 	const [ key, setKey ] = useState('');
 
+	const high = useRef({} as HTMLInputElement);
+	const medium = useRef({} as HTMLInputElement);
+	const low = useRef({} as HTMLInputElement);
+
 	const unsetFiltersInner = () => {
 		setKey('');
 		unsetFilters();
+
+		high.current.checked = false;
+		medium.current.checked = false;
+		low.current.checked = false;
 	};
 
 	useEffect(
@@ -26,15 +34,21 @@ export const NotesFilter = ({ filterByTextFunc, filterByStatusFunc, unsetFilters
 
 				<div className="checkbox-label">
 					<label htmlFor="">High</label>
-					<input onChange={filterByStatusFunc} id="High priority" name="priority" type="radio" />
+					<input ref={high} onChange={filterByStatusFunc} id="High priority" name="priority" type="radio" />
 				</div>
 				<div className="checkbox-label">
 					<label htmlFor="">Medium</label>
-					<input onChange={filterByStatusFunc} id="Medium priority" name="priority" type="radio" />
+					<input
+						ref={medium}
+						onChange={filterByStatusFunc}
+						id="Medium priority"
+						name="priority"
+						type="radio"
+					/>
 				</div>
 				<div className="checkbox-label">
 					<label htmlFor="">Low</label>
-					<input onChange={filterByStatusFunc} id="Low priority" name="priority" type="radio" />
+					<input ref={low} onChange={filterByStatusFunc} id="Low priority" name="priority" type="radio" />
 				</div>
 			</div>
 
