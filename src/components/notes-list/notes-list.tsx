@@ -15,13 +15,13 @@ export const NotesList = ({ notes }: any) => {
 
 	const badgeColorFunc = (status: string): string => {
 		return status == 'High priority'
-			? 'danger'
-			: status == 'Medium priority' ? 'warning' : status == 'Low priority' ? 'secondary' : 'secondary';
+			? 'warning'
+			: status == 'Medium priority' ? 'info' : status == 'Low priority' ? 'secondary' : 'secondary';
 	};
 
 	return (
 		<div className="notes-list">
-			{notes &&
+			{notes && notes.length ? (
 				notes.map(({ title, status, body, key = '' }: INote) => {
 					const badgeColor = '';
 					return (
@@ -37,7 +37,10 @@ export const NotesList = ({ notes }: any) => {
 							</CardBody>
 						</Card>
 					);
-				})}
+				})
+			) : (
+				<h2>List is empty</h2>
+			)}
 		</div>
 	);
 };
