@@ -6,20 +6,29 @@ import { connect } from 'react-redux';
 
 const NotesPage = ({ notes }: any) => {
 
+	const [filteredNotes, setFilteredNotes] = useState(notes)
+
 	useEffect(() => {
 		setFilteredNotes(notes)
 	}, [notes])
 
-	const [filteredNotes, setFilteredNotes] = useState(notes)
 
-	const filterFunc = (key: string) => {
+	const filterByTextFunc = (key: string) => {
 		notes && setFilteredNotes(notes.filter(({title, body}: INote) => title.indexOf(key) !== -1 || body.indexOf(key) !== -1))
+	}
+
+	const filterByStatusFunc = (e: any) => {
+		notes && setFilteredNotes(notes.filter(({status}: INote) => status === e.target.id))
+	}
+
+	const unsetFilters = () => {
+		setFilteredNotes(notes)
 	}
 
 
 	return (
 		<>
-			<NotesFilter filterFunc={filterFunc}/>
+			<NotesFilter unsetFilters={unsetFilters} filterByStatusFunc={filterByStatusFunc} filterByTextFunc={filterByTextFunc}/>
 			<NotesList notes={filteredNotes} />
 		</>
 		);

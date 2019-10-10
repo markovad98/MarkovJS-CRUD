@@ -1,9 +1,33 @@
 .notes-filter {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.form-group {
+		display: flex;
+		align-items: center;
+
+		.form-group-title {
+			margin-right: 50px;
+		}
+
+		.checkbox-label {
+			margin-right: 15px;
+			display: flex;
+			align-items: center;
+		}
+	}
+
 	input {
-		width: 100%;
+		width: 45%;
 		margin: 15px 0;
 		padding: 9px;
 		border-radius: 7px;
 		border: 1px solid grey;
+	}
+
+	[type='radio'] {
+		width: unset;
+		margin-left: 10px;
 	}
 }
