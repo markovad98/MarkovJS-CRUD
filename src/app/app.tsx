@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import { HomePage } from '../pages/home-page';
 import { AboutPage } from '../pages/about-page';
 import NotesPage from '../pages/notes-page';
-import { NoteDetailsPage } from '../pages/note-details-page';
+import NoteDetailsPage from '../pages/note-details-page';
 // Layouts
 import { Header } from '../layouts/header/header';
 // Redux

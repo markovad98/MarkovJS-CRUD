@@ -34,7 +34,7 @@ export const notesService = () => {
 
 	const removeNote = async (key: string) => {
 		try {
-			const res = await axios.delete(`${BASE_USL}/notes/${key}.json`);
+			await axios.delete(`${BASE_USL}/notes/${key}.json`);
 			store.dispatch(removeNoteAction(key));
 		} catch (err) {
 			console.error(err);
