@@ -1,11 +1,12 @@
 import React, { useState, useEffect} from 'react';
-import { NotesList } from '../components/notes-list/notes-list';
+import NotesList from '../components/notes-list/notes-list';
 import { INote } from '../interfaces/note'
 import { NotesFilter } from '../components/notes-filter/notes-filter';
 import { connect } from 'react-redux';
 
-const NotesPage = ({ notes }: any) => {
+const NotesPage = ({ notes, loader }: any) => {
 
+	console.warn('LOADER: ', loader)
 
 	const [filteredNotes, setFilteredNotes] = useState(notes)
 
@@ -26,18 +27,18 @@ const NotesPage = ({ notes }: any) => {
 		setFilteredNotes(notes)
 	}
 
-
 	return (
 		<>
 			<NotesFilter unsetFilters={unsetFilters} filterByStatusFunc={filterByStatusFunc} filterByTextFunc={filterByTextFunc}/>
-			<NotesList notes={filteredNotes} />
+			{<NotesList loader={loader} notes={filteredNotes} />}
 		</>
 		);
 };
 
 const mapStateToProps = (state: any) => {
 	return {
-		notes: state
+		notes: state.notes,
+		loader: state.loader
 	};
 };
 
