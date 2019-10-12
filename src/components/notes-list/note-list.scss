@@ -6,6 +6,16 @@
 	.notes-list__item {
 		width: 48%;
 		margin-bottom: 4%;
+
+		.note-body {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.title-body-wrapper {
+			margin-bottom: 30px;
+		}
 	}
 
 	.note-btns {
@@ -20,4 +30,25 @@
 	display: flex;
 	justify-content: center;
 	margin-top: 50px;
+}
+
+@media (max-width: 1240px) {
+	.badge {
+		width: max-content;
+		display: block;
+		padding: 10px;
+		margin: 10px 0;
+	}
+	h1 {
+		font-size: 32px;
+	}
+	.notes-list {
+		flex-direction: column;
+		align-items: center;
+
+		.notes-list__item {
+			width: 100%;
+			margin: 15px 0;
+		}
+	}
 }

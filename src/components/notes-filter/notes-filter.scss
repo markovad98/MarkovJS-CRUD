@@ -1,4 +1,5 @@
 .notes-filter {
+	margin-bottom: 30px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -6,21 +7,32 @@
 	.form-group {
 		display: flex;
 		align-items: center;
+		margin: 0;
 
 		.form-group-title {
+			margin-bottom: 0;
 			margin-right: 50px;
 		}
 
+		.priority-list {
+			margin-bottom: 0;
+			display: flex;
+			align-items: center;
+		}
 		.checkbox-label {
 			margin-right: 15px;
 			display: flex;
 			align-items: center;
+			margin-bottom: 0;
+
+			label {
+				margin-bottom: 0;
+			}
 		}
 	}
 
-	input {
+	.filter-input {
 		width: 45%;
-		margin: 15px 0;
 		padding: 9px;
 		border-radius: 7px;
 		border: 1px solid grey;
@@ -29,5 +41,41 @@
 	[type='radio'] {
 		width: unset;
 		margin-left: 10px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.notes-filter {
+		flex-direction: column;
+
+		.form-group {
+			margin-top: 20px;
+			width: 100%;
+			justify-content: flex-start;
+		}
+
+		.reset-btn {
+			margin-top: 20px;
+			width: 100%;
+			display: flex;
+			justify-content: flex-end;
+		}
+
+		.filter-input {
+			width: 100%;
+		}
+	}
+}
+
+@media (max-width: 440px) {
+	.notes-filter {
+		.form-group {
+			flex-direction: column;
+			align-items: flex-start;
+
+			.form-group-title {
+				margin-bottom: 15px;
+			}
+		}
 	}
 }

@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { notesService } from '../../services/notes-service';
 import './note-details.scss';
 
-const NoteDetails = ({ location, notes, loader, ...props }: any) => {
+const NoteDetails = ({ location, notes, loader, history, ...props }: any) => {
 	const { getNotes, removeNote } = notesService();
 	const [ note, setNote ] = useState({ title: '', status: '', body: '', key: '' });
 
@@ -17,14 +17,15 @@ const NoteDetails = ({ location, notes, loader, ...props }: any) => {
 		[ notes ]
 	);
 
+	const onRemoveNote = (key: string) => {
+		removeNote(key);
+	};
+
 	const badgeColorFunc = (status: string): string => {
 		return status == 'High priority'
 			? 'warning'
 			: status == 'Medium priority' ? 'info' : status == 'Low priority' ? 'secondary' : 'secondary';
 	};
-
-	console.warn('DETAILS_NOTES: ', notes);
-	console.warn('DETAILS_NOTES: ', loader);
 
 	return loader ? (
 		<div className="spinner-wrapper">
@@ -33,12 +34,19 @@ const NoteDetails = ({ location, notes, loader, ...props }: any) => {
 	) : (
 		<Card key={note.key} className="notes-list__item">
 			<CardBody>
-				<h1>
-					{note.title}&nbsp;<Badge color={badgeColorFunc(note.status)}>{note.status}</Badge>
-				</h1>
-				<CardText>{note.body}</CardText>
+				<div>
+					<h1>
+						{note.title}&nbsp;<Badge color={badgeColorFunc(note.status)}>{note.status}</Badge>
+					</h1>
+
+					<CardText>{note.body}</CardText>
+				</div>
+
 				<div className="note-btns">
-					<Button onClick={() => removeNote(note.key)} color="danger">
+					<Button onClick={() => history.goBack()} color="primary">
+						Go to list
+					</Button>
+					<Button onClick={() => onRemoveNote(note.key)} color="danger">
 						Delete note
 					</Button>
 				</div>

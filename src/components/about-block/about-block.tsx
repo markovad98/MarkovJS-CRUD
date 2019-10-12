@@ -1,4 +1,5 @@
 import React from 'react';
+import './about-block.scss'
 import { Jumbotron, Button } from 'reactstrap';
 
 export const AboutBlock = () => {

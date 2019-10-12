@@ -9,7 +9,6 @@ const handlers = {
 } as any;
 
 export const notesReducer = (state: any = [], action: IAction) => {
-	console.log('STATE: ', state, 'ACTION: ', action);
 	const handle = handlers[action.type] || handlers.DEFAULT;
 	return handle(state, action);
 };

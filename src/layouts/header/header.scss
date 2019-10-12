@@ -20,6 +20,7 @@
 			list-style: none;
 			display: flex;
 			justify-content: space-between;
+			margin: 0;
 
 			&__item {
 				font-size: 18px;
@@ -33,6 +34,21 @@
 
 				&_active {
 					color: #c7c7c7;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 400px) {
+	.header {
+		padding: 30px 15px;
+
+		.nav {
+			&-list {
+				&__item {
+					padding-left: 10px;
+					font-size: 16px;
 				}
 			}
 		}

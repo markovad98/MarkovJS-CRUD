@@ -29,17 +29,21 @@ const NotesList = ({ notes, loader, history }: any) => {
 					const badgeColor = '';
 					return (
 						<Card key={key} className="notes-list__item">
-							<CardBody>
-								<h1>
-									{title}&nbsp;<Badge color={badgeColorFunc(status)}>{status}</Badge>
-								</h1>
-								<CardText>{body}</CardText>
+							<CardBody className="note-body">
+								<div className="title-body-wrapper">
+									<h1>
+										{title}&nbsp;<Badge color={badgeColorFunc(status)}>{status}</Badge>
+									</h1>
+
+									<CardText>{body}</CardText>
+								</div>
+
 								<div className="note-btns">
+									<Link to={`notes/${key}`}>
+										<Button color="primary">Details</Button>
+									</Link>
 									<Button onClick={() => removeNote(key)} color="danger">
 										Delete note
-									</Button>
-									<Button onClick={() => history.push(`notes/${key}`)} color="primary">
-										Details
 									</Button>
 								</div>
 							</CardBody>
