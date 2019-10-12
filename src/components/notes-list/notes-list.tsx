@@ -25,8 +25,7 @@ const NotesList = ({ notes, loader, history }: any) => {
 	) : (
 		<div className="notes-list">
 			{notes && notes.length ? (
-				notes.map(({ title, status, body, key = '' }: INote) => {
-					const badgeColor = '';
+				notes.map(({ title, status, body, key = '', date }: INote) => {
 					return (
 						<Card key={key} className="notes-list__item">
 							<CardBody className="note-body">
@@ -34,7 +33,7 @@ const NotesList = ({ notes, loader, history }: any) => {
 									<h1>
 										{title}&nbsp;<Badge color={badgeColorFunc(status)}>{status}</Badge>
 									</h1>
-
+									<strong className="note-date">{date}</strong>
 									<CardText>{body}</CardText>
 								</div>
 

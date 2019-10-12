@@ -3,4 +3,5 @@ export interface INote {
 	body: string;
 	status: string;
 	key?: string;
+	date: string;
 }

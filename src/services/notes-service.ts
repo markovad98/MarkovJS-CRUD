@@ -21,7 +21,7 @@ export const notesService = () => {
 	};
 
 	const addNote = async (title: string, body: string, status: string) => {
-		let note: INote = { title, body, status };
+		let note: INote = { title, body, status, date: new Date().toLocaleString() };
 
 		try {
 			const res = await axios.post(`${BASE_USL}/notes.json`, note);
